@@ -76,6 +76,7 @@ export function Scene3D() {
         height: "100vh",
         zIndex: 1,
         opacity: 0.6,
+        pointerEvents: "none",
       }}
     >
       <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
