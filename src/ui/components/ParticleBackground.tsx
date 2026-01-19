@@ -29,7 +29,9 @@ export function ParticleBackground() {
               enable: true,
               mode: "repulse",
             },
-            resize: true,
+            resize: {
+              enable: true,
+            },
           },
           modes: {
             push: {
@@ -65,7 +67,7 @@ export function ParticleBackground() {
           number: {
             density: {
               enable: true,
-              area: 800,
+              factor: 800,
             },
             value: 80,
           },
