@@ -4,77 +4,95 @@ import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
 
 const particlesOptions: ISourceOptions = {
-        background: {
-          color: {
-            value: "transparent",
-          },
-        },
-        fpsLimit: 120,
-        interactivity: {
-          events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-            resize: {
-              enable: true,
-            },
-          },
-          modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-          },
-        },
-        particles: {
-          color: {
-            value: ["#4A90E2", "#50C878", "#FFB84D", "#FF6B6B"],
-          },
-          links: {
-            color: "#4A90E2",
-            distance: 150,
-            enable: true,
-            opacity: 0.2,
-            width: 1,
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 1,
-            straight: false,
-          },
-          number: {
-            density: {
-              enable: true,
-              width: 1920,
-              height: 1080,
-            },
-            value: 80,
-          },
-          opacity: {
-            value: 0.5,
-          },
-          shape: {
-            type: ["circle", "triangle"],
-          },
-          size: {
-            value: { min: 1, max: 4 },
-          },
-        },
-        detectRetina: true,
-      }}
+  background: {
+    color: {
+      value: "transparent",
+    },
+  },
+  fpsLimit: 120,
+  interactivity: {
+    events: {
+      onClick: {
+        enable: true,
+        mode: "push",
+      },
+      onHover: {
+        enable: true,
+        mode: "repulse",
+      },
+      resize: {
+        enable: true,
+      },
+    },
+    modes: {
+      push: {
+        quantity: 4,
+      },
+      repulse: {
+        distance: 200,
+        duration: 0.4,
+      },
+    },
+  },
+  particles: {
+    color: {
+      value: ["#4A90E2", "#50C878", "#FFB84D", "#FF6B6B"],
+    },
+    links: {
+      color: "#4A90E2",
+      distance: 150,
+      enable: true,
+      opacity: 0.2,
+      width: 1,
+    },
+    move: {
+      direction: "none",
+      enable: true,
+      outModes: {
+        default: "bounce",
+      },
+      random: false,
+      speed: 1,
+      straight: false,
+    },
+    number: {
+      density: {
+        enable: true,
+        width: 1920,
+        height: 1080,
+      },
+      value: 80,
+    },
+    opacity: {
+      value: 0.5,
+    },
+    shape: {
+      type: ["circle", "triangle"],
+    },
+    size: {
+      value: { min: 1, max: 4 },
+    },
+  },
+  detectRetina: true,
+};
+
+export function ParticleBackground() {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  if (!init) return null;
+
+  return (
+    <Particles
+      id="tsparticles"
+      options={particlesOptions}
       style={{
         position: "fixed",
         top: 0,
