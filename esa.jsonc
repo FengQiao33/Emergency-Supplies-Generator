@@ -1,0 +1,10 @@
+{
+  "name": "family-emergency-supplies-generator",
+  "entry": "./functions/api/generate.ts",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "assets": {
+    "directory": "./dist",
+    "notFoundStrategy": "singlePageApplication"
+  }
+}
